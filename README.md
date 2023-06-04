@@ -1,15 +1,12 @@
 # EX-05-Feature-Generation
 
-
-
 ## AIM
-To read the given data and perform Feature Generation process and save the data to a file. 
-
+To read the given data and perform Feature Generation process and save the data to a file.
 # Explanation
-Feature Generation (also known as feature construction, feature extraction or feature engineering) is the process of transforming features into new features that better relate to the target.
- 
 
+Feature Generation (also known as feature construction, feature extraction or feature engineering) is the process of transforming features into new features that better relate to the target.
 # ALGORITHM
+
 ### STEP 1
 Read the given Data
 ### STEP 2
@@ -19,558 +16,74 @@ Apply Feature Generation techniques to all the feature of the data set
 ### STEP 4
 Save the data to the file
 
-
 # CODE
-## Data.csv :
-```
-import pandas as pd
-df=pd.read_csv("data.csv")
-df
-
-#feature generation
-import category_encoders as ce
-be=ce.BinaryEncoder()
-ndf=be.fit_transform(df["bin_1"])
-df["bin_1"] = be.fit_transform(df["bin_1"])
-ndf
-
-ndf2=be.fit_transform(df["bin_2"])
-df["bin_2"] = be.fit_transform(df["bin_2"])
-ndf2
-
-df1=df.copy()
-from sklearn.preprocessing import LabelEncoder,OrdinalEncoder,OneHotEncoder
-import category_encoders as ce
-be=ce.BinaryEncoder()
-ohe=OneHotEncoder(sparse=False)
-le=LabelEncoder()
-oe=OrdinalEncoder()
-
-
-df1["City"] = ohe.fit_transform(df1[["City"]])
-
-temp=['Cold','Warm','Hot','Very Hot']
-oe1=OrdinalEncoder(categories=[temp])
-df1['Ord_1'] = oe1.fit_transform(df1[["Ord_1"]])
-
-edu=['High School','Diploma','Bachelors','Masters','PhD']
-oe2=OrdinalEncoder(categories=[edu])
-df1['Ord_2']= oe2.fit_transform(df1[["Ord_2"]])
-df1
-
-#feature scaling
-from sklearn.preprocessing import MinMaxScaler
-sc=MinMaxScaler()
-df2=pd.DataFrame(sc.fit_transform(df1),columns=['id', 'bin_1', 'bin_2', 'City', 'Ord_1','Ord_2','Target'])
-df2
-
-from sklearn.preprocessing import StandardScaler
-sc1=StandardScaler()
-df3=pd.DataFrame(sc1.fit_transform(df1),columns=['id', 'bin_1', 'bin_2', 'City', 'Ord_1','Ord_2','Target'])
-df3
-
-from sklearn.preprocessing import MaxAbsScaler
-sc2=MaxAbsScaler()
-df4=pd.DataFrame(sc2.fit_transform(df1),columns=['id', 'bin_1', 'bin_2', 'City', 'Ord_1','Ord_2','Target'])
-df4
-
-from sklearn.preprocessing import RobustScaler
-sc3=RobustScaler()
-df5=pd.DataFrame(sc3.fit_transform(df1),columns=['id', 'bin_1', 'bin_2', 'City', 'Ord_1','Ord_2','Target'])
-df5
-```
-## Encoding.csv :
-```
-import pandas as pd
-df=pd.read_csv("Encoding Data.csv")
-df
-
-#feature generation
-import category_encoders as ce
-be=ce.BinaryEncoder()
-ndf=be.fit_transform(df["bin_1"])
-df["bin_1"] = be.fit_transform(df["bin_1"])
-ndf
-
-ndf2=be.fit_transform(df["bin_2"])
-df["bin_2"] = be.fit_transform(df["bin_2"])
-ndf2
-
-df1=df.copy()
-from sklearn.preprocessing import LabelEncoder,OrdinalEncoder
-le=LabelEncoder()
-oe=OrdinalEncoder()
-
-df1["nom_0"] = oe.fit_transform(df1[["nom_0"]])
-temp=['Cold','Warm','Hot']
-oe2=OrdinalEncoder(categories=[temp])
-df1['ord_2'] = oe2.fit_transform(df1[['ord_2']])
-
-df1
-
-#feature scaling
-from sklearn.preprocessing import MinMaxScaler
-sc=MinMaxScaler()
-df0=pd.DataFrame(sc.fit_transform(df1),columns=['id', 'bin_1', 'bin_2', 'nom_0','ord_2'])
-df0
-
-from sklearn.preprocessing import StandardScaler
-sc1=StandardScaler()
-df2=pd.DataFrame(sc1.fit_transform(df1),columns=['id', 'bin_1', 'bin_2', 'nom_0','ord_2'])
-df2
-
-from sklearn.preprocessing import MaxAbsScaler
-sc2=MaxAbsScaler()
-df3=pd.DataFrame(sc2.fit_transform(df1),columns=['id', 'bin_1', 'bin_2', 'nom_0','ord_2'])
-df3
-
-from sklearn.preprocessing import RobustScaler
-sc3=RobustScaler()
-df4=pd.DataFrame(sc3.fit_transform(df1),columns=['id', 'bin_1', 'bin_2', 'nom_0','ord_2'])
-df4
-```
-## Titanic.csv :
-```
-Skip to content
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
-@gchandru454
-2002-vetrivel /
-EX-05-Feature-Generation
-Public
-forked from Karthi-Govindharaju/EX-05-Feature-Generation
-
-Fork your own copy of 2002-vetrivel/EX-05-Feature-Generation
-
-Code
-Pull requests
-Actions
-Projects
-Security
-
-    Insights
-
-You’re making changes in a project you don’t have write access to. Submitting a change will write it to a new branch in your fork gchandru454/EX-05-Feature-Generation, so you can send a pull request.
-EX-05-Feature-Generation/
-in
-2002-vetrivel:main
-
-104
-
-​
-
-105
-
-df1["nom_0"] = oe.fit_transform(df1[["nom_0"]])
-
-106
-
-temp=['Cold','Warm','Hot']
-
-107
-
-oe2=OrdinalEncoder(categories=[temp])
-
-108
-
-df1['ord_2'] = oe2.fit_transform(df1[['ord_2']])
-
-109
-
-​
-
-110
-
-df1
-
-111
-
-​
-
-112
-
-#feature scaling
-
-113
-
-from sklearn.preprocessing import MinMaxScaler
-
-114
-
-sc=MinMaxScaler()
-
-115
-
-df0=pd.DataFrame(sc.fit_transform(df1),columns=['id', 'bin_1', 'bin_2', 'nom_0','ord_2'])
-
-116
-
-df0
-
-117
-
-​
-
-118
-
-from sklearn.preprocessing import StandardScaler
-
-119
-
-sc1=StandardScaler()
-
-120
-
-df2=pd.DataFrame(sc1.fit_transform(df1),columns=['id', 'bin_1', 'bin_2', 'nom_0','ord_2'])
-
-121
-
-df2
-
-122
-
-​
-
-123
-
-from sklearn.preprocessing import MaxAbsScaler
-
-124
-
-sc2=MaxAbsScaler()
-
-125
-
-df3=pd.DataFrame(sc2.fit_transform(df1),columns=['id', 'bin_1', 'bin_2', 'nom_0','ord_2'])
-
-126
-
-df3
-
-127
-
-​
-
-128
-
-from sklearn.preprocessing import RobustScaler
-
-129
-
-sc3=RobustScaler()
-
-130
-
-df4=pd.DataFrame(sc3.fit_transform(df1),columns=['id', 'bin_1', 'bin_2', 'nom_0','ord_2'])
-
-131
-
-df4
-
-132
-
-```
-
-133
-
-## Titanic.csv :
-
-134
-
-```
-
-135
 
 import pandas as pd
 
-136
+df=pd.read_csv("/content/data[1].csv")
 
-df=pd.read_csv("titanic_dataset.csv")
-
-137
-
-df
-
-138
-
-​
-
-139
-
-#removing unwanted data
-
-140
-
-df.drop("Name",axis=1,inplace=True)
-
-141
-
-df.drop("Ticket",axis=1,inplace=True)
-
-142
-
-df.drop("Cabin",axis=1,inplace=True)
-
-143
-
-​
-
-144
-
-#data cleaning
-
-145
+df.info()
 
 df.isnull().sum()
 
-146
+from sklearn.preprocessing import LabelEncoder
 
-​
+le = LabelEncoder()
 
-147
+df['Ord_2'] = le.fit_transform(df['Ord_2'])
 
-df["Age"]=df["Age"].fillna(df["Age"].median())
+sns.set(style ="darkgrid")
 
-148
+sns.countplot(df['Ord_2'])
 
-df["Embarked"]=df["Embarked"].fillna(df["Embarked"].mode()[0])
+from sklearn.preprocessing import OneHotEncoder
 
-149
+enc = OneHotEncoder()
 
-​
+enc = enc.fit_transform(df[['City']]).toarray()
 
-150
+encoded_colm = pd.DataFrame(enc)
 
-df.isnull().sum()
+df = pd.concat([df, encoded_colm], axis=1)
 
-151
+df = df.drop(['City'], axis=1)
 
-​
+df.head(10)
 
-152
+df = pd.get_dummies(df, prefix=['Ord_2'], columns=['Ord_2'])
 
-df
+df.head(10)
 
-153
+df = pd.get_dummies(df, prefix=['Ord_1'], columns=['Ord_1'])
 
-​
+df.head(10)
 
-154
+# OUTPUT
 
-#feature encoding
+![image](https://user-images.githubusercontent.com/95408674/195148645-3ff4ab68-ff5a-4da8-954e-bca5a8a38273.png)
 
-155
+![image](https://user-images.githubusercontent.com/95408674/195148748-b12c3570-5b8a-4519-9d53-7d5711373d43.png)
 
-from category_encoders import BinaryEncoder
+![image](https://user-images.githubusercontent.com/95408674/195148831-c2a2f359-35d6-43d8-911a-a4c9b05f8a60.png)
 
-156
+![image](https://user-images.githubusercontent.com/95408674/195148929-e2de4a74-9dc8-4f52-8914-a4c5681e02a5.png)
 
-be=BinaryEncoder()
+![image](https://user-images.githubusercontent.com/95408674/195149029-8c702639-c298-4081-9829-361e665f8655.png)
 
-157
+encoding dataset
 
-df["Sex"]=be.fit_transform(df[["Sex"]])
+![image](https://user-images.githubusercontent.com/95408674/195150047-76d3aa8a-76a5-441e-b358-052cf146409f.png)
 
-158
+![image](https://user-images.githubusercontent.com/95408674/195150160-2716c263-ff52-4028-8605-afe87d33956d.png)
 
-ndf=be.fit_transform(df["Sex"])
+![image](https://user-images.githubusercontent.com/95408674/195150255-14a1faa2-236d-4f3c-b2b5-f002fe22028c.png)
 
-159
+![image](https://user-images.githubusercontent.com/95408674/195152628-d4d8a827-209b-4f6d-a26c-dbc874d6f552.png)
 
-ndf
+![image](https://user-images.githubusercontent.com/95408674/195154452-32d6ac57-0161-4651-9e07-7c2bd9c6411a.png)
 
-160
+![image](https://user-images.githubusercontent.com/95408674/195154513-4c2fd80a-309b-4593-8701-1e1034a06e18.png)
 
-​
+![image](https://user-images.githubusercontent.com/95408674/195154582-e7b82dc8-8f59-4c37-9f28-18a1c110e9b4.png)
 
-161
-
-df1=df.copy()
-
-162
-
-from sklearn.preprocessing import LabelEncoder, OrdinalEncoder
-
-163
-
-embark=['S','C','Q']
-
-164
-
-e1=OrdinalEncoder(categories=[embark])
-
-165
-
-df1['Embarked'] = e1.fit_transform(df[['Embarked']])
-
-166
-
-df1
-
-167
-
-​
-
-168
-
-#feature scaling
-
-169
-
-from sklearn.preprocessing import MinMaxScaler
-
-170
-
-sc=MinMaxScaler()
-
-171
-
-df2=pd.DataFrame(sc.fit_transform(df1),columns=['Passenger','Survived','Pclass','Sex','Age','SibSp','Parch','Fare','Embarked'])
-
-172
-
-df2
-
-Attach files by dragging & dropping, selecting or pasting them.
-Styling with Markdown is supported
-@gchandru454
-Propose changes
-Commit summary
-Optional extended description
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-
-    Terms
-    Privacy
-    Security
-    Status
-    Docs
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
-
-import pandas as pd
-df=pd.read_csv("titanic_dataset.csv")
-df
-
-#removing unwanted data
-df.drop("Name",axis=1,inplace=True)
-df.drop("Ticket",axis=1,inplace=True)
-df.drop("Cabin",axis=1,inplace=True)
-
-#data cleaning
-df.isnull().sum()
-
-df["Age"]=df["Age"].fillna(df["Age"].median())
-df["Embarked"]=df["Embarked"].fillna(df["Embarked"].mode()[0])
-
-df.isnull().sum()
-
-df
-
-#feature encoding
-from category_encoders import BinaryEncoder
-be=BinaryEncoder()
-df["Sex"]=be.fit_transform(df[["Sex"]])
-ndf=be.fit_transform(df["Sex"])
-ndf
-
-df1=df.copy()
-from sklearn.preprocessing import LabelEncoder, OrdinalEncoder
-embark=['S','C','Q']
-e1=OrdinalEncoder(categories=[embark])
-df1['Embarked'] = e1.fit_transform(df[['Embarked']])
-df1
-
-#feature scaling
-from sklearn.preprocessing import MinMaxScaler
-sc=MinMaxScaler()
-df2=pd.DataFrame(sc.fit_transform(df1),columns=['Passenger','Survived','Pclass','Sex','Age','SibSp','Parch','Fare','Embarked'])
-df2
-
-from sklearn.preprocessing import StandardScaler
-sc1=StandardScaler()
-df3=pd.DataFrame(sc1.fit_transform(df1),columns=['Passenger','Survived','Pclass','Sex','Age','SibSp','Parch','Fare','Embarked'])
-df3
-
-from sklearn.preprocessing import MaxAbsScaler
-sc2=MaxAbsScaler()
-df4=pd.DataFrame(sc2.fit_transform(df1),columns=['Passenger','Survived','Pclass','Sex','Age','SibSp','Parch','Fare','Embarked'])
-df4
-
-from sklearn.preprocessing import RobustScaler
-sc3=RobustScaler()
-df5=pd.DataFrame(sc3.fit_transform(df1),columns=['Passenger','Survived','Pclass','Sex','Age','SibSp','Parch','Fare','Embarked'])
-df5
-```
-
-# OUPUT
-## Data.csv :
-
-![image](https://user-images.githubusercontent.com/66360846/195596531-b68f0526-f0ec-4259-9a67-0f0bb8b02847.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195596571-6a58411d-73bd-456e-b706-81cac98f48d9.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195596597-ba3d9fd3-796a-4c5c-932f-6257a18fe190.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195596696-b2223a0e-2e04-49ce-a4c0-331f8f7aee33.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195596731-d044ee9d-0951-47f4-96aa-a220fd7bee52.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195596763-70246f26-3b05-471b-9be9-47e7f2c2c61b.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195596792-20bb802b-255a-4a6f-9009-9c14219fd411.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195596834-9cb3d404-c62b-4cbc-a01f-f8316298c73b.png)
-
-## Encoding.csv :
-
-![image](https://user-images.githubusercontent.com/66360846/195596934-3052bedc-0664-4b01-943a-77a2274efe41.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195596913-8e17a687-de64-4911-b13c-126f1c20e40b.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195596998-f1c64537-f01b-46d6-bd16-f66b3e720e19.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597022-9435ebd0-a3f6-4758-9065-dc3494d91397.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597091-c99b4dd7-ed51-4489-a797-a3a6a13cb3d3.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597137-44a47720-6356-41b4-a4d5-8c2a924da4a6.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597215-f3a627f7-a110-441c-8370-4478da3db87c.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597324-6a23a40b-ff9a-45e6-aeea-628d9e8f0a47.png)
-
-## Titanic.csv :
-![image](https://user-images.githubusercontent.com/66360846/195597358-07e6b926-39d1-44b2-81d6-087777fbc203.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597403-862ae4a8-5805-4a32-835f-0fa608f1ab9c.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597435-7c927495-ce46-46b3-855f-6efac1a1cb4d.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597455-00c4c28e-aa71-4e34-8502-749129782286.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597487-15f3498b-3c98-47e8-9de4-55b2e2ef8880.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597511-65816246-3c7b-4b05-8275-ba038894ede4.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597536-01f441bd-df8f-4921-9c69-a7545bbb4678.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597567-e1c836fa-da38-497d-9064-53b7d4f126bd.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597588-db649710-17be-425e-9321-35cf4a9ea81b.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195597611-36160d7e-b4bd-4893-a7a8-d26bf4ede2fa.png)
-
-![image](https://user-images.githubusercontent.com/66360846/195598122-1041ab68-216d-45a6-adc2-373ea6a1da60.png)
-
-## RESULT:
-Feature Generation process and Feature Scaling process is applied to the given data frames sucessfully.
+![image](https://user-images.githubusercontent.com/95408674/195154666-cc40068b-f3c9-49ab-8ce1-edc81bed5718.png)
